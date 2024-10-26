@@ -12,9 +12,13 @@
         @else
             @for(var user : page.getUsers())
                <div>
-                   <h2><a href="/users/${user.getId()}">${user.getEmail()}</a></h2>
-                   <h3>${page.getUser().getLastName()}</h3>
-                   <h3>${page.getUser().getFirstName()}</h3>
+                   <h2>
+                       <a href="/users/${user.getId()}">
+                           ${user.getEmail()}
+                           ${user.getLastName()}
+                           ${user.getFirstName()}
+                       </a>
+                   </h2>
                </div>
             @endfor
         @endif
