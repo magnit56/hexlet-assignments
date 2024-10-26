@@ -4,7 +4,6 @@ import io.javalin.Javalin;
 import java.util.List;
 
 import io.javalin.http.HttpResponseException;
-import io.javalin.http.NotFoundResponse;
 import exercise.model.User;
 import exercise.dto.users.UserPage;
 import exercise.dto.users.UsersPage;
