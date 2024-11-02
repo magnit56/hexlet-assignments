@@ -8,6 +8,10 @@
 </head>
 <body>
 <h1>title</h1>
+<div>
+    <a href="/">Main</a>
+    <a href="/users">Users</a>
+</div>
 <div class="content">
     ${content}
 </div>
