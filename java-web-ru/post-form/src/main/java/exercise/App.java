@@ -37,8 +37,12 @@ public final class App {
         });
 
         app.post("/users", ctx -> {
-            var firstName = StringUtils.capitalize(Objects.requireNonNull(ctx.formParam("firstName")).trim().toLowerCase());
-            var lastName = StringUtils.capitalize(Objects.requireNonNull(ctx.formParam("lastName")).trim().toLowerCase());
+            var firstName = StringUtils.capitalize(
+                Objects.requireNonNull(ctx.formParam("firstName")).trim().toLowerCase()
+            );
+            var lastName = StringUtils.capitalize(
+                Objects.requireNonNull(ctx.formParam("lastName")).trim().toLowerCase()
+            );
             var email = Objects.requireNonNull(ctx.formParam("email")).trim().toLowerCase();
             var password = Security.encrypt(Objects.requireNonNull(ctx.formParam("password")));
             var passwordConfirmation = ctx.formParam("passwordConfirmation");
