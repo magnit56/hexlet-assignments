@@ -38,8 +38,7 @@ public class Application {
     @PostMapping("/posts")
     public ResponseEntity<Post> create(@RequestBody Post post) {
         posts.add(post);
-        return ResponseEntity.status(201)
-                .body(post);
+        return ResponseEntity.status(201).body(post);
     }
 
     @GetMapping("/posts/{id}")
