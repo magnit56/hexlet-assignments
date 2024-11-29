@@ -16,7 +16,12 @@ public class Application {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                System.out.println("Method " + method.getName() + " returns a value of type " + method.getReturnType().getSimpleName());
+                System.out.println(
+                    "Method "
+                    + method.getName()
+                    + " returns a value of type "
+                    + method.getReturnType().getSimpleName()
+                );
             }
         }
         // END
