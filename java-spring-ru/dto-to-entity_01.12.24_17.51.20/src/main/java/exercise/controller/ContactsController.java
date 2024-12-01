@@ -27,7 +27,7 @@ public class ContactsController {
     public ResponseEntity<ContactDTO> create(@RequestBody ContactCreateDTO contactCreateDTO) {
         var contact = toEntity(contactCreateDTO);
         contact = contactRepository.save(contact);
-        return ResponseEntity.ok().body(toDTO(contact));
+        return ResponseEntity.status(HttpStatus.CREATED).body(toDTO(contact));
     }
 
     public ContactDTO toDTO(Contact contact) {
