@@ -1,6 +1,7 @@
 package exercise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,33 +20,33 @@ public class ContactsController {
 
     @Autowired
     private ContactRepository contactRepository;
-
     // BEGIN
-    @PostMapping
+
+    @PostMapping(path = "")
     @ResponseStatus(HttpStatus.CREATED)
-    public ContactDTO createContact(@RequestBody ContactCreateDTO contactCreateDTO) {
+    public ResponseEntity<ContactDTO> create(@RequestBody ContactCreateDTO contactCreateDTO) {
         var contact = toEntity(contactCreateDTO);
-        var savedContact = contactRepository.save(contact);
-        return toContactDTO(savedContact);
+        contact = contactRepository.save(contact);
+        return ResponseEntity.ok().body(toDTO(contact));
     }
 
-    public ContactDTO toContactDTO(Contact contact) {
-        var contactDTO = new ContactDTO();
-        contactDTO.setId(contact.getId());
-        contactDTO.setFirstName(contact.getFirstName());
-        contactDTO.setLastName(contact.getLastName());
-        contactDTO.setPhone(contact.getPhone());
-        contactDTO.setCreatedAt(contact.getCreatedAt());
-        contactDTO.setUpdatedAt(contact.getUpdatedAt());
-        return contactDTO;
+    public ContactDTO toDTO(Contact contact) {
+        var dto = new ContactDTO();
+        dto.setId(contact.getId());
+        dto.setFirstName(contact.getFirstName());
+        dto.setLastName(contact.getLastName());
+        dto.setPhone(contact.getPhone());
+        dto.setCreatedAt(contact.getCreatedAt());
+        dto.setUpdatedAt(contact.getUpdatedAt());
+        return dto;
     }
 
     public Contact toEntity(ContactCreateDTO contactCreateDTO) {
-        var contact = new Contact();
-        contact.setFirstName(contactCreateDTO.getFirstName());
-        contact.setLastName(contactCreateDTO.getLastName());
-        contact.setPhone(contactCreateDTO.getPhone());
-        return contact;
+        var entity = new Contact();
+        entity.setFirstName(contactCreateDTO.getFirstName());
+        entity.setLastName(contactCreateDTO.getLastName());
+        entity.setPhone(contactCreateDTO.getPhone());
+        return entity;
     }
     // END
 }
