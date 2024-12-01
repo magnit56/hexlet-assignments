@@ -1,6 +1,9 @@
 package exercise.dto;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Future;
+import jakarta.validation.constraints.Email;
 
 import java.time.LocalDate;
 

@@ -16,7 +16,6 @@ import java.util.List;
 
 import exercise.repository.GuestRepository;
 import exercise.dto.GuestDTO;
-import exercise.dto.GuestCreateDTO;
 import exercise.exception.ResourceNotFoundException;
 
 @RestController
@@ -50,7 +49,6 @@ public class GuestsController {
     @PostMapping(path = "")
     @ResponseStatus(HttpStatus.CREATED)
     public GuestDTO create(@RequestBody @Valid Guest guest) {
-//        var guest = guestMapper.map(guestCreateDto);
         guest = guestRepository.save(guest);
         return guestMapper.map(guest);
     }
