@@ -24,7 +24,7 @@ public class ProductsController {
     // BEGIN
     @GetMapping(path = "")
     public List<Product> index(
-        @RequestParam(required = false) Integer min, @RequestParam(required = false) Integer max
+        @RequestParam(required = false) int min, @RequestParam(required = false) int max
     ) {
         if (min == null && max == null) {
             return productRepository.findAll(Sort.by(Sort.Direction.ASC, "price"));
