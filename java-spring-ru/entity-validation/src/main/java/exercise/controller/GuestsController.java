@@ -1,5 +1,6 @@
 package exercise.controller;
 
+import exercise.dto.GuestCreateDTO;
 import exercise.mapper.GuestMapper;
 import exercise.model.Guest;
 import jakarta.validation.Valid;
@@ -48,7 +49,8 @@ public class GuestsController {
     // BEGIN
     @PostMapping(path = "")
     @ResponseStatus(HttpStatus.CREATED)
-    public GuestDTO create(@RequestBody @Valid Guest guest) {
+    public GuestDTO create(@RequestBody @Valid GuestCreateDTO guestCreateDTO) {
+        var guest = guestMapper.map(guestCreateDTO);
         guest = guestRepository.save(guest);
         return guestMapper.map(guest);
     }
